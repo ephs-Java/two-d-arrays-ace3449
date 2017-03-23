@@ -7,6 +7,7 @@ public class TwoDArrayBasics {
 		
 		int [][] nums = new int[3][5];
 		int [] summer = new int [nums.length];
+		int [] array = {1, 2, 3, 4, 4};
 		
 		// Fill the array with random numbers using fillRandom
 		
@@ -23,6 +24,13 @@ public class TwoDArrayBasics {
 		System.out.println("The sum of row " + (row1 + 1) + " = " + summer[row1]);
 		System.out.println("The sum of row " + (row2 + 1) + " = " + summer[row2]);
 		System.out.println("The sum of row " + (row3 + 1) + " = " + summer[row3]);
+		
+		System.out.println();
+		System.out.println(areRepeats(array));
+		
+		System.out.println();
+		System.out.println("The maximum value is " + minValue(nums));
+		System.out.println("The minimum value is " + maxValue(nums));
 		
 		
 		
@@ -96,7 +104,28 @@ public class TwoDArrayBasics {
 	 * elements of the array are unique
 	 */
 	
-
+	public static boolean areRepeats(int[] nums) {
+		int counter = 0;
+		
+		for(int i = 0; i < nums.length; i++) {
+			for(int j = 0; j < nums.length; j++) {
+				if(nums[j] == nums[i]) {
+					counter++;
+				}
+			}
+			
+			if(counter >= 2) {
+				return true;
+			} else {
+				counter = 0;
+			}
+			
+		}
+		
+		return false;
+		
+		
+	}
 	
 	
 	/*
@@ -105,12 +134,41 @@ public class TwoDArrayBasics {
 	 * return -1 if it is not found
 	 */
 	
+	public static int indexOfTarget(int[][] nums, int target) {
+		int index = -1;
+		
+		for(int row = 0; row < nums.length; row++) {
+			for(int column = 0; column < nums[0].length; column++) {
+				if(nums[row][column] == target) {
+					return row;
+				}
+			}
+		}
+		
+		return index;
+	}
+	
 
 	
 	
 	/*
 	 * return the min value in a 2D array
 	 */
+	
+	public static int minValue(int[][] nums) {
+		int min = nums[0][0];
+		
+		for(int row = 0; row < nums.length; row++) {
+			for(int column = 0; column < nums[0].length; column++) {
+				if(nums[row][column] < min) {
+					min = nums[row][column];
+				}
+			}
+		}
+		
+		return min;
+		
+	}
 	
 
 	
@@ -120,7 +178,20 @@ public class TwoDArrayBasics {
 	 * return the max value in a 2D array
 	 */
 	
-
+	public static int maxValue(int[][] nums) {
+		int max = nums[0][0];
+		
+		for(int row = 0; row < nums.length; row++) {
+			for(int column = 0; column < nums[0].length; column++) {
+				if(nums[row][column] > max) {
+					max = nums[row][column];
+				}
+			}
+		}
+		
+		return max;
+		
+	}
 	
 	
 	
